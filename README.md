@@ -1,4 +1,3 @@
-
 <h1 align="center">
   <br>
   <a href="https://github.com/context-labs/autodoc"><img src="https://raw.githubusercontent.com/context-labs/autodoc/master/assets/autodoc.png" alt="Markdownify" width="200" style="border-radius:8px;"></a>
@@ -6,8 +5,7 @@
 Autodoc
   <br>
 </h1>
-
-<h4 align="center">⚡ Toolkit for auto-generating codebase documentation using LLMs ⚡</h4>
+<h4 align="center">⚡ Conjunto de ferramentas para gerar automaticamente documentação de base de código usando LLMs ⚡</h4>
 <p align="center">
 <a href="https://opensource.org/licenses/MIT">
 	  <img alt="Twitter URL" src="https://img.shields.io/badge/License-MIT-yellow.svg">
@@ -21,148 +19,184 @@ Autodoc
 	  <img alt="Discord Server" src="https://dcbadge.vercel.app/api/server/zpFEXXWSNg?compact=true&style=flat">
   </a>
 </p>
-
 <p align="center">
-  <a href="#what-is-this">What is this?</a> •
-  <a href="#get-started">Get Started</a> •
-  <a href="#community">Community</a> •
-  <a href="#contributing">Contribute</a>
+  <a href="#what-is-this">O que é isso?</a> •
+  <a href="#get-started">Comece</a> •
+  <a href="#community">Comunidade</a> •
+  <a href="#contributing">Contribua</a>
 </p>
 
+### **O que é isso?**
 
-## What is this?
-Autodoc is a **experimental** toolkit for for auto-generating codebase documention for git repositories using Large Language Models, like [GPT-4](https://openai.com/research/gpt-4) or [Alpaca](https://github.com/ggerganov/llama.cpp). Autodoc can be [installed](#get-started) in your repo in about 5 minutes. It indexes your codebase through a depth-first traversal of all repository contents and calls an LLM to write documentation for each file and folder. These documents can be combined to describe the different components of your system and how they work together. 
+Autodoc é um conjunto de ferramentas **experimental** para gerar automaticamente documentação de base de código para repositórios git usando Modelos de Linguagem de Grande Escala, como **[GPT-4](https://openai.com/research/gpt-4)** ou **[Alpaca](https://github.com/ggerganov/llama.cpp)**. O Autodoc pode ser **[instalado](https://chat.openai.com/chat?model=gpt-4#get-started)** em seu repositório em cerca de 5 minutos. Ele indexa sua base de código através de uma travessia em profundidade de todos os conteúdos do repositório e chama um LLM para escrever documentação para cada arquivo e pasta. Esses documentos podem ser combinados para descrever os diferentes componentes do seu sistema e como eles trabalham juntos.
 
-The generated documentation lives in your codebase, and travels where your code travels. Developers who download your code can use the `doc` command to ask questions about your codebase and get highly specific answers with reference links back to code files. 
+A documentação gerada vive em sua base de código e acompanha onde seu código viaja. Os desenvolvedores que baixam seu código podem usar o comando **`doc`** para fazer perguntas sobre sua base de código e obter respostas altamente específicas com links de referência de volta aos arquivos de código.
 
-In the near future, documentation will be re-indexed as part your CI pipeline, so it is always up-to-date. If your interested in working contributing to this work, see [this issue](https://github.com/context-labs/autodoc/issues/7).
+No futuro próximo, a documentação será reindexada como parte do seu pipeline de CI, para que esteja sempre atualizada. Se você estiver interessado em trabalhar contribuindo para este trabalho, veja **[esta issue](https://github.com/context-labs/autodoc/issues/7)**.
 
+### **Status**
 
-### Status
-Autodoc is in the early stages of development. It is functional, but not ready for production use. Things may break, or not work as expected. If you're interested in working on the core Autodoc framwork, please see [contributing](#contributing). We would love to have your help!
+Autodoc está nos estágios iniciais de desenvolvimento. Ele é funcional, mas não está pronto para
 
-### FAQs
-**Question:** I'm not getting good responses. How can I improve response quality?
+uso em produção. As coisas podem quebrar ou não funcionar conforme o esperado. Se você estiver interessado em trabalhar no framework central do Autodoc, consulte **[contribuindo](https://chat.openai.com/chat?model=gpt-4#contributing)**. Adoraríamos contar com sua ajuda!
 
-**Answer:** Autodoc is in the early stages of development. As such, the response quality can vary widely based on the type of project your indexing and how questions are phrased. A few tips to writing good query:
-1. Be specific with your questions. Ask things like "What are the different components of authorization in this system?" rather than "explain auth". This will help Autodoc select the right context to get the best answer for your question.
-2. Use GPT-4. GPT-4 is substantially better at understanding code compared to GPT-3.5 and this understanding carries over into writing good documentation as well. If you don't have access, sign up [here](https://openai.com/waitlist/gpt-4-api).
+### **Perguntas frequentes**
 
+**Pergunta:** Não estou obtendo boas respostas. Como posso melhorar a qualidade das respostas?
 
-### Examples
-Below are a few examples of how Autodoc can be used. 
-1. [Autodoc](https://github.com/context-labs/autodoc) - This repository contains documentation for itself, generated by Autodoc. It lives in the `.autodoc` folder. Follow the instructions [here](#querying) to learn how to query it.
-2. [TolyGPT.com](https://tolygpt.com) - TolyGPT is an Autodoc chatbot trained on the [Solana validator](https://github.com/solana-labs/solana) codebase and deployed to the web for easy access. In the near future, Autodoc will support a web version in additon to the existing CLI tool.
+**Resposta:** Autodoc está nos estágios iniciais de desenvolvimento. Como tal, a qualidade das respostas pode variar amplamente com base no tipo de projeto que você está indexando e em como as perguntas são formuladas. Algumas dicas para escrever uma boa consulta:
 
-## Get Started
+1. Seja específico com suas perguntas. Faça coisas como "Quais são os diferentes componentes de autorização neste sistema?" em vez de "explicar autenticação". Isso ajudará o Autodoc a selecionar o contexto certo para obter a melhor resposta para sua pergunta.
+2. Use GPT-4. O GPT-4 é substancialmente melhor em entender código em comparação com o GPT-3.5, e esse entendimento se traduz em escrever uma boa documentação também. Se você não tiver acesso, inscreva-se **[aqui](https://openai.com/waitlist/gpt-4-api)**.
 
-#### Requirements
-Autodoc requires Node v18.0.0 or greater. v19.0.0 or greater is recommended. Make sure you're running the proper version:
+### **Exemplos**
 
-```bash
+Abaixo estão alguns exemplos de como o Autodoc pode ser usado.
+
+1. **[Autodoc](https://github.com/context-labs/autodoc)** - Este repositório contém documentação para si mesmo, gerada pelo Autodoc. Ele vive na pasta **`.autodoc`**. Siga as instruções **[aqui](https://chat.openai.com/chat?model=gpt-4#querying)** para aprender como consultá-lo.
+2. **[TolyGPT.com](https://tolygpt.com/)** - TolyGPT é um chatbot Autodoc treinado na base de código **[Solana validator](https://github.com/solana-labs/solana)** e implantado na web para fácil acesso. No futuro próximo, o Autodoc suportará uma versão web além da ferramenta CLI existente.
+
+## **Comece**
+
+### Requisitos
+
+Autodoc requer Node v18.0.0 ou superior. Recomenda-se v19.0.0 ou superior. Certifique-se de que você está executando a versão adequada:
+
+```
+bashCopy code
 $ node -v
+
 ```
 
-Example output:
-```bash
+Exemplo de saída:
+
+```
+bashCopy code
 v19.8.1
+
 ```
 
-Install the Autodoc CLI tool as a global NPM module:
+Instale a ferramenta CLI Autodoc como um módulo global NPM:
 
-```bash
+```
+bashCopy code
 $ npm install -g @context-labs/autodoc
+
 ```
-This command installs the Autodoc CLI tool that will allow you to create and query Autodoc indexes.
 
-Run `doc` to see the available commands.
+Este comando instala a ferramenta CLI Autodoc que permitirá criar e consultar índices Autodoc.
 
-### Querying
-We'll use the Autodoc repository as an example to demonstrate how querying in Autodoc works.
+Execute **`doc`** para ver os comandos disponíveis.
 
-Clone Autodoc and change directory to get started:
+### **Consultando**
 
-```bash 
+Usaremos o repositório Autodoc como exemplo para demonstrar como funciona a consulta no Autodoc.
+
+Clone Autodoc e mude o diretório para começar:
+
+```
+bashCopy code
 $ git clone https://github.com/context-labs/autodoc.git
 $ cd autodoc
+
 ```
 
-Right now Autodoc only supports OpenAI. Make sure you have have your OpenAI API key exported in your current session:
+No momento, Autodoc suporta apenas OpenAI. Certifique-se de ter sua chave API OpenAI exportada em sua sessão atual:
 
-```bash
-$ export OPENAI_API_KEY=<YOUR_KEY_HERE>
+```
+bashCopy code
+$ export OPENAI_API_KEY=<SUA_CHAVE_AQUI>
+
 ```
 
-To start the Autodoc query CLI, run:
+Para iniciar a CLI de consulta Autodoc, execute:
 
-```bash
+```
+bashCopy code
 $ doc q
+
 ```
 
-If this is your first time running `doc q`, you'll get a screen that prompts you to select which GPT models you have access to. Select whichever is appropriate for your level of access. If you aren't sure, select the first option:
+Se esta for a primeira vez que você executa **`doc q`**, verá uma tela que solicita que você selecione quais modelos GPT você tem acesso. Selecione o que for apropriado para seu nível de acesso. Se você não tiver certeza, selecione a primeira opção:
 
 <img src="https://raw.githubusercontent.com/context-labs/autodoc/master/assets/select-models.png" alt="Markdownify" width="60%" style="border-radius:24px;">
 
-You're now ready to query documentation for the Autodoc repository:
+Agora você está pronto para consultar a documentação do repositório Autodoc:
 
 <img src="https://raw.githubusercontent.com/context-labs/autodoc/master/assets/query.gif" alt="Markdownify" width="60%" style="border-radius:24px;">
 
-This is the core querying experience. It's very basic right now, with plenty of room of improvement. If you're interested in improving the Autodoc CLI querying experience, checkout [this issue](https://github.com/context-labs/autodoc/issues/11).
+Esta é a experiência básica de consulta. É muito básico no momento, com muito espaço para melhorias. Se você estiver interessado em melhorar a experiência de consulta CLI Autodoc, confira **[este problema](https://github.com/context-labs/autodoc/issues/11)**.
 
-### Indexing
-Follow the steps below to generate documentation for your own repository using Autodoc.
+### **Indexando**
 
-Change directory into the root of your project:
-```bash
+Siga as etapas abaixo para gerar documentação para seu próprio repositório usando Autodoc.
+
+Mude o diretório para a raiz do seu projeto:
+
+```
+bashCopy code
 cd $PROJECT_ROOT
-```
-Make sure your OpenAI API key is available in the current session:
 
-```bash
-$ export OPENAI_API_KEY=<YOUR_KEY_HERE>
 ```
 
-Run the `init` command:
+Certifique-se de que sua chave API OpenAI está disponível na sessão atual:
+
 ```
+bashCopy code
+$ export OPENAI_API_KEY=<SUA_CHAVE_AQUI>
+
+```
+
+Execute o comando **`init`**:
+
+```
+csharpCopy code
 doc init
+
 ```
-You will be prompted to enter the name of your project, GitHub url, and select which GPT models you have access to. If you aren't sure which models you have access to, select the first option. This command will generate an `autodoc.config.json` file in the root of your project to store the values. This file should be checked in to git.
 
-**Note:** Do not skip entering these values or indexing may not work.
+Você será solicitado a inserir o nome do seu projeto, a URL do GitHub e selecionar quais modelos GPT você tem acesso. Se você não tiver certeza de quais modelos tem acesso, selecione a primeira opção. Este comando irá gerar um arquivo **`autodoc.config.json`** na raiz do seu projeto para armazenar os valores. Este arquivo deve ser adicionado ao git.
 
-**Prompt Configuration:** You'll find prompt directions specified in `prompts.ts`, with some snippets customizable in the `autodoc.config.json`. The current prompts are developer focused and assume your repo is code focused. We will have more reference templates in the future.
+**Nota:** Não pule a inserção desses valores ou a indexação pode não funcionar.
 
-Run the `index` command:
-```bash
+**Configuração de Prompt:** Você encontrará instruções de prompt especificadas em **`prompts.ts`**, com alguns trechos personalizáveis no **`autodoc.config.json`**. Os prompts atuais são focados no desenvolvedor e supõem que seu repositório é focado em código. Teremos mais modelos de referência no futuro.
+
+Execute o comando **`index`**:
+
+```
+bashCopy code
 doc index
+
 ```
 
-You should see a screen like this:
+Você deve ver uma tela como esta:
 
 <img src="https://raw.githubusercontent.com/context-labs/autodoc/master/assets/index-estimate.png" alt="Markdownify" width="60%" style="border-radius:24px;">
 
-This screen estimates the cost of indexing your repository. You can also access this screen via the `doc estimate` command. If you've already indexed once, then `doc index` will only reindex files that have been changed on the second go.
+Esta tela estima o custo de indexar seu repositório. Você também pode acessar esta tela através do comando **`doc estimate`**. Se você já indexou uma vez, o **`doc index`** só reindexará os arquivos que foram alterados na segunda vez.
 
-For every file in your project, Autodoc calculates the number of tokens in the file based on the file content. The more lines of code, the larger the number of tokens. Using this number, it determine which model it will use on per file basis, always choosing the cheapest model whose context length supports the number of tokens in the file. If you're interested in helping make model selection configurable in Autodoc, check out [this issue](https://github.com/context-labs/autodoc/issues/9).
+Para cada arquivo em seu projeto, o Autodoc calcula o número de tokens no arquivo com base no conteúdo do arquivo. Quanto mais linhas de código, maior o número de tokens. Usando esse número, ele determina qual modelo usará por arquivo, sempre escolhendo o modelo mais barato cujo comprimento de contexto suporte o número de tokens no arquivo. Se você estiver interessado em ajudar a tornar a seleção de modelo configurável no Autodoc, confira [este problema](**[https://github.com/context-labs/autodoc/issues/9](https://github.com/context-labs/autodoc/issues/9)).**
 
-**Note:** This naive model selection strategy means that files under ~4000 tokens will be documented using GPT-3.5, which will result in less accurate documenation. **We recommend using GPT-4 8K at a minimum.** Indexing with GPT-4 results in signficantly better output. You can apply for access [here](https://openai.com/waitlist/gpt-4-api).
+).
 
-For large projects, the cost can be several hundred dollars. View OpenAI pricing [here](https://openai.com/pricing). 
+**Nota:** Essa estratégia ingênua de seleção de modelo significa que arquivos com menos de ~4000 tokens serão documentados usando GPT-3.5, o que resultará em documentação menos precisa. **Recomendamos o uso de GPT-4 8K no mínimo.** A indexação com GPT-4 resulta em uma saída significativamente melhor. Você pode se inscrever para acessar **[aqui](https://openai.com/waitlist/gpt-4-api)**.
 
-In the near future, we will support self-hosted models, such as [Llama](https://github.com/facebookresearch/llama) and [Alpaca](https://github.com/tatsu-lab/stanford_alpaca). Read [this issue](https://github.com/context-labs/autodoc/issues/8) if you're interesting in contributing to this work.
+Para projetos grandes, o custo pode ser de várias centenas de dólares. Veja os preços da OpenAI **[aqui](https://openai.com/pricing)**.
 
-When you're done repository is done being indexed, you should see a screen like this:
+Em um futuro próximo, ofereceremos suporte a modelos auto-hospedados, como **[Llama](https://github.com/facebookresearch/llama)** e **[Alpaca](https://github.com/tatsu-lab/stanford_alpaca)**. Leia **[este problema](https://github.com/context-labs/autodoc/issues/8)** se você estiver interessado em contribuir para este trabalho.
+
+Quando o repositório terminar de ser indexado, você verá uma tela como esta:
 
 <img src="https://raw.githubusercontent.com/context-labs/autodoc/master/assets/index-finished.png" alt="Markdownify" width="60%" style="border-radius:24px;">
 
-You can now query your application using the steps outlined in [querying](#querying).
+Agora você pode consultar seu aplicativo usando as etapas descritas em **[consultando](https://chat.openai.com/chat?model=gpt-4#querying)**.
 
-## Community
-There is a small group of us that are working full time on Autodoc. Join us on [Discord](https://discord.gg/zpFEXXWSNg), or follow us on [Twitter](https://twitter.com/autodoc_) for updates. We'll be posting reguarly and continuing to improve the Autodoc applicatioin. What to contribute? Read below.
+## **Comunidade**
 
+Há um pequeno grupo de nós que estão trabalhando em tempo integral no Autodoc. Junte-se a nós no **[Discord](https://discord.gg/zpFEXXWSNg)** ou siga-nos no **[Twitter](https://twitter.com/autodoc_)** para atualizações. Estaremos postando regularmente e continuando a melhorar o aplicativo Autodoc. Quer contribuir? Leia abaixo.
 
-## Contributing
+## **Contribuindo**
 
-As an open source project in a rapidly developing field, we are extremely open to contributions, whether it be in the form of a new feature, improved infra, or better documentation.
+Como um projeto de código aberto em um campo em rápido desenvolvimento, estamos extremamente abertos a contribuições, seja na forma de um novo recurso, infraestrutura aprimorada ou melhor documentação.
 
-For detailed information on how to contribute, see [here](.github/CONTRIBUTING.md).
+Para obter informações detalhadas sobre como contribuir, consulte **[aqui](https://chat.openai.com/.github/CONTRIBUTING.md)**.
